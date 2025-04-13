@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My profile</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styels.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="lang-switch" onclick="toggleLanguage()">English | العربية</div>
+
+  <div class="sidebar">
+    <div class="logo-container">
+      <img src="{% static 'images/LOGO_T.png' %}" alt="Logo" class="logo">
+    </div>
+    <h1 data-en="My profile" data-ar="ملفي الشخصي">My Portfolio</h1>
+  
+    <ul>
+      <li><a href="#about" data-en="About Me" data-ar="من أنا">About Me</a></li>
+      <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+      <li><a href="#certifications" data-en="Certifications" data-ar="الشهادات">Certifications</a></li>
+      <li><a href="#contact" data-en="Contact" data-ar="التواصل">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <section id="about">
+      <h2 data-en="About Me" data-ar="من أنا">About Me</h2>
+      <p data-en="I am an experienced IT professional with a strong background in backend web development, system administration, and electronic systems development. I specialize in creating responsive websites and automating workflows. With a focus on Python (Django) and Oracle SQL, I offer reliable and efficient solutions to meet your business needs. Let’s work together to bring your ideas to life!." 
+         data-ar="أنا متخصص في تكنولوجيا المعلومات من ذوي الخبرة ولدي خلفية قوية في تطوير الويب الخلفي وإدارة النظام وتطوير الأنظمة الإلكترونية. أنا متخصص في إنشاء مواقع ويب سريعة الاستجابة وأتمتة سير العمل. مع التركيز على Python (Django) و Oracle SQL ، أقدم حلولا موثوقة وفعالة لتلبية احتياجات عملك. دعونا نعمل معا لإضفاء الحيوية على أفكارك!">
+         I am an experienced IT professional with a strong background in backend web development, system administration, and electronic systems development. I specialize in creating responsive websites and automating workflows. With a focus on Python (Django) and Oracle SQL, I offer reliable and efficient solutions to meet your business needs. Let’s work together to bring your ideas to life!.
+      </p>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 data-en="My Projects" data-ar="مشاريعي">My Projects</h2>
+      <div class="cert-grid">
+        {% for project in projects %}
+        <div class="cert-grid">
+          {% if project.google_drive_link %}
+            <iframe
+              src="{{ project.google_drive_link|cut:'view?usp=sharing' }}preview"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          {% elif project.media %}
+            {% if project.media.url|slice:"-4:" == ".mp4" %}
+              <video controls>
+                <source src="{{ project.media.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            {% else %}
+              <img src="{{ project.media.url }}" alt="{{ project.title }}" class="zoomable">
+            {% endif %}
+          {% endif %}
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <div class="project-links">
+            {% if project.github_link %}
+              <a href="{{ project.github_link }}" target="_blank">GitHub</a>
+            {% endif %}
+            {% if project.live_demo_link %}
+              <a href="{{ project.live_demo_link }}" target="_blank">Live Demo</a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="certifications" class="section">
+      <h2 data-en="My Certifications" data-ar="شهاداتي">My Certifications</h2>
+      {% if certificates %}
+        <div class="cert-grid">
+          {% for certificate in certificates %}
+            {% if certificate.google_drive_link %}
+              <div class="cert-card">
+                <iframe
+                  src="{{ certificate.google_drive_link|cut:'view?usp=sharing' }}preview"
+                  frameborder="0"
+                  allowfullscreen></iframe>
+                <p>{{ certificate.title }}</p>
+              </div>
+            {% elif certificate.image %}
+              <div class="cert-card">
+                <img src="{{ certificate.image.url }}" alt="{{ certificate.title }}" />
+                <p>{{ certificate.title }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p style="text-align: center; color: #888;" data-en="No certifications available at the moment." data-ar="لا توجد شهادات متاحة حاليًا.">
+          No certifications available at the moment.
+        </p>
+      {% endif %}
+    </section>
+
+    <section id="contact">
+      <h2 data-en="Contact Me" data-ar="تواصل معي">Contact Me</h2>
+      <p data-en="Email: " data-ar="البريد الإلكتروني: "></p><a href="mailto:turkialshehri67@gmail.com">turkialshehri67@gmail.com</a>
+      <p data-en="GitHub: " data-ar="جيت هب: "></p><a href="https://github.com/Turki12" target="_blank">https://github.com/Turki12</a>
+    </section>
+  </div>
+
+  <script>
+    function setLanguage(lang) {
+      const html = document.getElementById("html-root");
+      html.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+      html.setAttribute("lang", lang);
+
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.textContent = el.getAttribute(lang === "ar" ? "data-ar" : "data-en");
+      });
+
+      localStorage.setItem("siteLang", lang);
+    }
+
+    function toggleLanguage() {
+      const currentLang = localStorage.getItem("siteLang") || "en";
+      const newLang = currentLang === "en" ? "ar" : "en";
+      setLanguage(newLang);
+    }
+
+    // عند التحميل
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem("siteLang") || "en";
+      setLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.cert-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+}
+
+.cert-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.cert-card p {
+  padding: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  display: flex;
+  background-color: #f9f9f9;
+  color: #333;
+}
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: #222;
+  color: #fff;
+  padding: 30px 20px;
+  position: fixed;
+}
+.sidebar h1 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin: 15px 0;
+}
+.sidebar ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.sidebar ul li a:hover {
+  color: #fff;
+}
+.main-content {
+  margin-left: 240px;
+  padding: 40px;
+  width: calc(100% - 240px);
+}
+section {
+  margin-bottom: 60px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+iframe {
+  border: none;
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+}
+a {
+  color: #1a73e8;
+}
+
+/* Zoom full screen image */
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cert-card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.cert-card iframe,
+.cert-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.translate-box {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 9999;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+}
+
+/*  */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fefefe;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+[dir="ltr"] .sidebar {
+  left: 0;
+  text-align: left;
+}
+
+/* المحتوى الرئيسي */
+.main-content {
+  margin-left: 240px;
+  padding: 20px;
+}
+
+[dir="rtl"] .main-content {
+  margin-left: 0;
+  margin-right: 240px;
+  text-align: right;
+}
+
+[dir="ltr"] .main-content {
+  margin-right: 0;
+  text-align: left;
+}
+
+/* الأقسام العامة */
+.section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.section p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* شبكة المشاريع والشهادات */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* تصحيح روابط المشروع */
+.project-links a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #0077cc;
+}
+
+[dir="rtl"] .project-links a {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.lang-switch {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: #f0f0f0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-left: -50px;
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 80px;
+  }
+}
