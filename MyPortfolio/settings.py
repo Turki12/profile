@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
+# BASE_DIR using pathlib
+load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 env = environ.Env(DEBUG=(bool, False))
@@ -40,7 +43,7 @@ SECRET_KEY = 'django-insecure-1@z=6vrnccw%cp$fb#u78n%!dfwb3t3%*5%*ep%q1e3)9)rvr0
 
 
 
-ALLOWED_HOSTS = ['profile-elv9.onrender.com']
+ALLOWED_HOSTS = ['profile-elv9.onrender.com','localhost']
 
 
 LOGGING = {
