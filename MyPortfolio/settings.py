@@ -14,6 +14,12 @@ import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 
+
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+DEBUG = env('DJANGO_DEBUG', default=False)
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
@@ -31,7 +37,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-1@z=6vrnccw%cp$fb#u78n%!dfwb3t3%*5%*ep%q1e3)9)rvr0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 
 ALLOWED_HOSTS = ['profile-elv9.onrender.com']
