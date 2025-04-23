@@ -13,6 +13,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
+# BASE_DIR using pathlib
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,10 +37,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-1@z=6vrnccw%cp$fb#u78n%!dfwb3t3%*5%*ep%q1e3)9)rvr0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ['portfolio.onrender.com']
+=======
+
+
+ALLOWED_HOSTS = ['profile-elv9.onrender.com', 'localhost', '127.0.0.1']
+
+>>>>>>> bbdaecaf272146bee5bbe2f2b384f2ef3983621f
 
 LOGGING = {
     'version': 1,
@@ -70,6 +82,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -156,8 +169,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'staticfiles' 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
