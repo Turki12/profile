@@ -1,0 +1,12 @@
+{% extends 'portfolio/index.html' %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/styels.css' %}">
+{% block content %}
+    <h2>Contact Us</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send Message</button>
+    </form>
+ 
+    {% endblock %}

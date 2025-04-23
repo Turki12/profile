@@ -1,0 +1,19 @@
+{% extends 'portfolio/index.html' %}
+
+{% block title %}Admin Control Panel{% endblock %}
+
+{% block content %}
+<h2>Control Panel</h2>
+<ul>
+    {% for project in projects %}
+        <li>
+            {{ project.title }} 
+            <a href="{% url 'project-edit' project.id %}">Edit</a> |
+            <a href="{% url 'project-delete' project.id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li>No projects found.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'project-add' %}">Add New Project</a>
+{% endblock %}

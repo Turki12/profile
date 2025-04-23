@@ -1,0 +1,14 @@
+{% extends 'portfolio/index.html' %}
+
+{% block title %}Project Details{% endblock %}
+
+{% block content %}
+<h2>{{ project.title }}</h2>
+<p><strong>Description:</strong> {{ project.description }}</p>
+<p><strong>Image:</strong> {{ project.media }}</p>
+<p><strong>Link:</strong> {{ project.link }}</p>
+
+<a href="{% url 'project-edit' project.id %}">Edit</a> |
+<a href="{% url 'project-delete' project.id %}">Delete</a> |
+<a href="{% url 'project-list' %}">Back to Projects</a>
+{% endblock %}

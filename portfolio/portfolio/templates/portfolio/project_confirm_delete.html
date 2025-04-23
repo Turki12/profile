@@ -1,0 +1,10 @@
+{% extends 'portfolio/index.html' %}
+{% block content %}
+<h2>حذف المشروع</h2>
+<p>هل أنت متأكد أنك تريد حذف المشروع "{{ project.title }}"؟</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">نعم، حذف</button>
+    <a href="{% url 'project-list' %}" class="btn btn-secondary">إلغاء</a>
+</form>
+{% endblock %}
