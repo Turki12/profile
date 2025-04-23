@@ -38,15 +38,9 @@ SECRET_KEY = 'django-insecure-1@z=6vrnccw%cp$fb#u78n%!dfwb3t3%*5%*ep%q1e3)9)rvr0
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-<<<<<<< HEAD
-ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = ['portfolio.onrender.com']
-=======
-
 
 ALLOWED_HOSTS = ['profile-elv9.onrender.com', 'localhost', '127.0.0.1']
 
->>>>>>> bbdaecaf272146bee5bbe2f2b384f2ef3983621f
 
 LOGGING = {
     'version': 1,
