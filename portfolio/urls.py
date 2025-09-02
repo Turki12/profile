@@ -30,7 +30,7 @@ urlpatterns = [
     path('projects/delete/<int:pk>/', ProjectDeleteView.as_view(), name='project-delete'),
 
     # ✅ تسجيل الدخول والخروج
-    path('login/', CustomLoginView.as_view(template_name='templates/auth/login.html'), name='login'),
+    path('login/', CustomLoginView.as_view(template_name='portfolio/templates/auth/login.html'), name='login'),
     path('logout/', CustomLogoutView.as_view(next_page='/'), name='logout'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('contact/success/', ContactSuccessView.as_view(), name='contact_success'),
