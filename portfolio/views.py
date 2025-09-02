@@ -27,11 +27,14 @@ from .models import Project, Certificate
 
 class AdminRequiredMixin(LoginRequiredMixin, UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.is_superuser 
+        return self.request.user.is_superuser
 
 class CustomLoginView(LoginView):
     model = Project
     template_name = "auth/login.html"
+    # This is the line you need to change.
+    # It redirects to the URL with the name 'project-add'.
+    success_url = reverse_lazy("project-add")
     
     def form_valid(self, form):
         print("✅ تسجيل دخول ناجح للمستخدم:", form.get_user())
@@ -77,7 +80,6 @@ def home(request):
         'certificates': certificates,
     })
     
-
 
 def project_detail(request, pk):
     print(f"🔍 عرض تفاصيل المشروع ID: {pk}")
@@ -171,4 +173,3 @@ def project_list(request):
             'live_demo_link': project.live_demo_link,
         })
     return JsonResponse({'projects': project_data})
-
